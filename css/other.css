@@ -1,0 +1,48 @@
+@charset "utf-8";
+@import url("webfonts/_黑粗体/stylesheet.css");
+body {
+	font-family: "雅黑粗体";
+	background-color: #EDEEF3;
+}
+
+.小标题 {
+	font-family: "微软雅黑细";
+	font-size: 16px;
+	background-color: #D9D9F3;
+	width: 100px;
+	text-align: center;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	text-decoration: none;
+}
+
+.大标题 {
+	font-family: "华文行楷";
+	font-size: 50px;
+	color: #030;
+	text-align: center;
+	}
+
+#button {
+	text-decoration: none;
+	color: #333;
+	display: block;
+	height: 20px;
+	width: 80px;
+	padding-top: 10px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	margin-top: 4px;
+	margin-bottom: 10px;
+	left: auto;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	background-color: #D8D8BF;
+	border: 1px solid #CCC;
+}

@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+body{
+	background-attachment: fixed;
+	background-image: url(../image/bgp.jpg);
+	background-repeat: no-repeat;
+}
+
+.cyxtable{
+	margin: auto;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 20px;
+	background-color:rgba(240,240,240,0.65);
+}
+
+.大标题{
+	height: 100px;
+	font-family: "楷体";
+	font-size: 40px;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 100px;
+	background-color:rgba(203,194,135,0.2);
+}
+
+.底部{
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-family: "黑体";
+	font-size: 20px;
+	color: #FFFFFF;
+	background-color: rgba(203,194,135,0.2);
+}
+.ret{
+	margin: auto;
+	height: 40px;
+	width: 500px;
+	line-height: 50px;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 20px;
+	color: #E9DE0A;
+	background-color: rgba(203,194,135,0.2);
+}
+#grid{
+	background-color: #FDD8FE;
+	
+}
+
+#grid1{
+	background-color: #B8F9FC;
+}
+
+#grid2{
+	background-color: #A6F0C9;
+}
+A.alllink:link {
+	COLOR: #68E8E4;
+	TEXT-DECORATION: none;
+}
+A.alllink:visited {
+	COLOR: #DEFAF9;
+	TEXT-DECORATION: none;
+}
+A.alllink:hover {
+	COLOR: #FFF2FE;
+	TEXT-DECORATION: underline;
+}

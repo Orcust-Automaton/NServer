@@ -31,21 +31,25 @@ struct File_name{
 void send404 (int client_socket)
 {
     char *response = malloc(0x500);
+    memset(response , 0 , 0x500);
     char *body = "<html><head><title>Niyah</title></head><body><h2>寄</h2><p>404 not found</p></body></html>";
 
     snprintf(response , 0x500 , TARGE , NO_FOUND , SERVER, HTML);
     send( client_socket, response ,strlen(response),0 );
     send( client_socket, body ,strlen(body),0 );
+    free(response);
 }
 
 void send501 (int client_socket)
 {
     char *response = malloc(0x500);
+    memset(response , 0 , 0x500);
     char *body = "<html><head><title>Niyah</title></head><body><h2>Hacker?</h2><p>go out now!</p></body></html>";
 
     snprintf(response , 0x500 , TARGE , NO_FOUND , SERVER, HTML);
     send( client_socket, response ,strlen(response),0 );
     send( client_socket, body ,strlen(body),0 );
+    free(response);
 }
 
 void send200 (int client_socket , char *type ,char *file_name)
@@ -57,10 +61,12 @@ void send200 (int client_socket , char *type ,char *file_name)
         return;
     }
     char *response = malloc(0x500 );
+    memset(response , 0 , 0x500);
     snprintf(response , 0x500 , TARGE , OK , SERVER , type );
 
     send( client_socket , response , strlen(response),0);
     sendfile(client_socket,fd,NULL,0xffffffffffffff);
+    free(response);
 }
 
 struct File_name *getfile(char *file_name)
@@ -84,11 +90,11 @@ struct File_name *getfile(char *file_name)
 
 void analysis( int client_socket ,  char *buf)
 {
-    char *file_name = malloc(0x500);
+    char *file_name = malloc(0x500 + strlen(buf));
     char *tmp ;
     char *data ;
     char *type ;
-    memset(file_name , 0 ,0x500);
+    memset(file_name , 0 ,0x500 + strlen(buf));
     if(!strncasecmp( buf , "GET" , 3 ))
     {
         tmp = buf + 4;
@@ -110,6 +116,7 @@ void analysis( int client_socket ,  char *buf)
     }
 
     struct File_name *file = getfile(file_name);
+    free(file_name);
     if(! file)
     {
         send404( client_socket );
@@ -138,6 +145,9 @@ void analysis( int client_socket ,  char *buf)
     puts(file->name);
     puts(file->suffix);
     send200( client_socket , type ,file->name );
+    free(file->name);
+    free(file->suffix);
+    free(file);
 }
 
 int main(){
@@ -168,10 +178,11 @@ int main(){
     {
         int client_socket = accept(server_socket, NULL, NULL);
 
-        char buf[1024];
-        read(client_socket, buf, 1024);
+        char *buf = malloc(0x1000);
+        recv(client_socket, buf, 0x1000 ,0);
         analysis(client_socket , buf);
         close( client_socket );
+        free(buf);
     }
     close( server_socket );
 
